@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "77418418890b52992d94bb6960d7e453a743685f37e0c7e45d867500eae08446"
+            "sha256": "edeaf9631e16ce323faafcb4d88fa12c3d73505ecbfaf20fc30fbcb4819a717b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -50,6 +50,11 @@
                 "sha256:64cf1ee26d1cde3c73c6d7d107f835fed7c6a2904aef9eac223d57ad800c43fa"
             ],
             "version": "==0.13"
+        },
+        "env-process": {
+            "editable": true,
+            "git": "ssh://git@bitbucket.org/hamologist/env-process.git",
+            "ref": "e82d8210197fc3afb0fc3ba236403469cc3ee014"
         },
         "flask": {
             "hashes": [
