@@ -1,10 +1,12 @@
+from typing import Dict
+
 import requests
-from flask import Response, jsonify, request, _request_ctx_stack
+from flask import Response, jsonify, request
 from functools import wraps
 from jose import jwt
 
 from .auth_error import AuthError
-from flask_auth0 import AUTH0_DOMAIN, AUTH0_ALGORITHMS, AUTH0_API_AUDIENCE
+from flask_auth0.environment import AUTH0_DOMAIN, AUTH0_ALGORITHMS, AUTH0_API_AUDIENCE
 
 
 def handle_auth_error(error: AuthError) -> Response:
@@ -65,7 +67,8 @@ def requires_auth(f):
                 raise AuthError({"code": "invalid_header",
                                  "description": 'Unable to parse authentication token.'}, 401)
 
-            _request_ctx_stack.top.current_user = payload
+            request.current_user: Dict[str, any] = payload
+            request.current_user_id: str = payload.get('sub')
             return f(*args, **kwargs)
 
         raise AuthError({"code": "invalid_header",
